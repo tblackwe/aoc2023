@@ -29,18 +29,7 @@ class Day03
       coords_to_check = []
       rows_to_check.each { |row_i| columns_to_check.each { |col_i| coords_to_check << "#{row_i},#{col_i}" } }
       valid_part_nums << num.to_i unless (coords_to_check & symbol_coord).empty?
-      next if num != "616" # got a problem when same number is on the row twice
-
-      puts '-----'
-      rows_to_check.each do |row1|
-        row_to_print = ''
-
-        columns_to_check.each do |col1|
-          to_print = row1.negative? || col1.negative? || row1.to_i >= 140 || col1.to_i >= 140 ? 'B' : matrix[row1][col1]
-          row_to_print << to_print
-        end
-        puts row_to_print
-      end
+      row[num_start] = 'X' # this is a hack. got a problem when same number is on the row twice
     end
   end
   puts valid_part_nums.sum
