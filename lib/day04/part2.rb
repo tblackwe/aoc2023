@@ -15,7 +15,6 @@ class Day04
       { 'possible_winning_nums' => possible_winning_nums, 'candidates' => candidates, 'winning_nums' => winning_nums,
         'num_of_cards' => 1 }
   end
-  games['Card1']['num_of_cards'] = 1
 
   card_counter = 1
   total_scratchers = 0
