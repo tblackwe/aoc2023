@@ -28,5 +28,5 @@ class Day05
     seed_i = seed.to_i
     puts "Seed #{seed}, soil #{location_map['seed-to-soil'][:arr][seed_i]}, fertilizer #{location_map['seed-to-soil'][:arr][seed_i]}, water #{location_map['seed-to-soil'][:arr][seed_i]}, light #{location_map['seed-to-soil'][:arr][seed_i]}, temperature #{location_map['seed-to-soil'][:arr][seed_i]}, humidity #{location_map['seed-to-soil'][:arr][seed_i]}, location X"
   end
-  # puts location_map
+  # this doesnt work, quitting on 5 for now
 end
