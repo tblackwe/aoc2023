@@ -10,7 +10,7 @@ def determine_primary(hand) # rubocop:disable all
     pair: 2,
     high_card: 1
   }
-  uniq_cards = hand.split('').uniq
+  uniq_cards = hand.chars.uniq
   case uniq_cards.count
   when 1
     hand_values[:five_of_a_kind]
@@ -35,7 +35,7 @@ end
 
 def determine_secondary(hand) # rubocop:disable Metrics/MethodLength
   result = '0x'
-  hand.split('').each do |card|
+  hand.chars.each do |card|
     result += case card
               when 'A'
                 'e'

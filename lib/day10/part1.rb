@@ -3,7 +3,7 @@
 # Day10 of AoC 2023
 class Day10
   input = File.readlines('./lib/day10/input').map(&:chomp)
-  maze = input.map { |line| line.split('') }
+  maze = input.map { |line| line.chars }
 
   go_right = { x: 1, y: 0 }
   go_left = { x: -1, y: 0 }

@@ -5,7 +5,7 @@ class Day03
   input = File.readlines('./lib/day03/input')
   matrix = []
   input.each_with_index do |line, _index|
-    matrix << line.strip.split('')
+    matrix << line.strip.chars
   end
 
   symbol_coord = []

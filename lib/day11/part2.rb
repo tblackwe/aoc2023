@@ -8,7 +8,7 @@ class Day11
   empty_rows = []
   empty_columns = []
   input.each_with_index do |line, index|
-    split_line = line.split('')
+    split_line = line.chars
     place_holder << split_line
     empty_rows << index if split_line.count('#').zero?
   end
@@ -27,25 +27,21 @@ class Day11
     end
   end
 
-  pairs = []
-  until galaxy_coords.empty?
-    p1 = galaxy_coords.pop
-    galaxy_coords.each { |coord| pairs << [p1, coord] }
-  end
+  pairs = galaxy_coords.combination(2).to_a
 
   sum = 0
   pairs.each do |pair|
-    temp_1 = [pair[0][0], pair[1][0]].sort
-    distance_1 = (temp_1[0]..(temp_1[1] - 1)).map { |x| x }
-    blanks1 = distance_1 & empty_columns
-    distance_1 -= empty_columns
-    temp_2 = [pair[0][1], pair[1][1]].sort
-    distance_2 = (temp_2[0]..(temp_2[1] - 1)).map { |x| x }
-    blanks2 = distance_2 & empty_rows
-    distance_2 -= empty_rows
+    tuple = [pair[0][0], pair[1][0]].sort
+    distance1 = (tuple[0]..(tuple[1] - 1)).map { |x| x }
+    blanks1 = distance1 & empty_columns
+    distance1 -= empty_columns
+    tuple = [pair[0][1], pair[1][1]].sort
+    distance2 = (tuple[0]..(tuple[1] - 1)).map { |x| x }
+    blanks2 = distance2 & empty_rows
+    distance2 -= empty_rows
 
-    sum += distance_1.size +
-           distance_2.size +
+    sum += distance1.size +
+           distance2.size +
            (blanks1.size * 1_000_000) +
            (blanks2.size * 1_000_000)
   end

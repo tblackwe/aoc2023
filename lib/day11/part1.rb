@@ -6,7 +6,7 @@ class Day11
 
   place_holder = []
   input.each do |line|
-    split_line = line.split('')
+    split_line = line.chars
     place_holder << split_line
     place_holder << split_line if split_line.count('#').zero?
   end
@@ -24,11 +24,7 @@ class Day11
     end
   end
 
-  pairs = []
-  until galaxy_coords.empty?
-    p1 = galaxy_coords.pop
-    galaxy_coords.each { |coord| pairs << [p1, coord] }
-  end
+  pairs = galaxy_coords.combination(2).to_a
 
   sum = 0
   pairs.each do |pair|

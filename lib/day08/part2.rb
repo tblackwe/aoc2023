@@ -4,7 +4,7 @@
 class Day08
   input = File.readlines('./lib/day08/input')
 
-  instructions = input.first.strip.split('')
+  instructions = input.first.strip.chars
   map = {}
   input[2..].each do |line|
     map[line[0..2]] = { 'L' => line[7..9], 'R' => line[12..14] }
@@ -20,7 +20,7 @@ class Day08
 
     until final_destinations.include? current_location
       instructions.each do |instruction|
-        next if final_destinations.include? current_location
+        break if final_destinations.include? current_location
 
         steps += 1
         current_location = map[current_location][instruction]

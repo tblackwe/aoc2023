@@ -10,7 +10,7 @@ def determine_primary(hand) # rubocop:disable all
     pair: 2,
     high_card: 1
   }
-  split_hand = hand.split('')
+  split_hand = hand.chars
   j_count = split_hand.count('J')
   no_jokers_hand = split_hand.reject { |x| x == 'J' }
   uniq_cards = no_jokers_hand.uniq
@@ -41,7 +41,7 @@ end
 
 def determine_secondary(hand) # rubocop:disable all
   result = '0x'
-  hand.split('').each do |card|
+  hand.chars.each do |card|
     result += case card
               when 'A'
                 'e'
