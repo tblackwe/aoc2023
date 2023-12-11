@@ -16,7 +16,6 @@ class Day11
     galaxy_map << line
     galaxy_map << line if line.count('#').zero?
   end
-  galaxy_map = galaxy_map.transpose.map(&:reverse).transpose.map(&:reverse).transpose.map(&:reverse)
 
   galaxy_coords = []
   galaxy_map.each_with_index do |row, row_index|
