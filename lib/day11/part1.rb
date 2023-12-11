@@ -2,7 +2,7 @@
 
 # Day11 of AoC 2023
 class Day11
-  input = File.readlines('./lib/day11/input').map(&:chomp)
+  input = File.readlines('./lib/day11/test_input').map(&:chomp)
 
   place_holder = []
   input.each do |line|
