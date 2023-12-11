@@ -9,19 +9,25 @@ class Day08
   input[2..].each do |line|
     map[line[0..2]] = { 'L' => line[7..9], 'R' => line[12..14] }
   end
-  current_locations = map.find_all { |entry| entry[0].end_with? 'A' }.map { |entry| entry[0] }
+  start_locations = map.find_all { |entry| entry[0].end_with? 'A' }.map { |entry| entry[0] }
   final_destinations = map.find_all { |entry| entry[0].end_with? 'Z' }.map { |entry| entry[0] }
 
-  steps = 0
-  continue = true
-  while continue
-    instructions.each do |instruction|
-      steps += 1
-      current_locations = current_locations.map do |current_location|
-        map[current_location][instruction]
+  iterations = []
+
+  start_locations.each do |start_location|
+    steps = 0
+    current_location = start_location
+
+    until final_destinations.include? current_location
+      instructions.each do |instruction|
+        next if final_destinations.include? current_location
+
+        steps += 1
+        current_location = map[current_location][instruction]
       end
-      continue = !current_locations.all? { |candidate| final_destinations.include? candidate }
     end
+    iterations << steps
   end
-  puts steps
+
+  pp iterations.reduce(1, :lcm)
 end
